@@ -88,7 +88,7 @@ export function BuyerCopilotModal({
             )}
           </div>
           <DialogDescription className="text-xs text-muted-foreground">
-            Generate transparent, AI-drafted buyer notices with approved recovery plans. Never exposes internal costs or blame.
+            Generate transparent, AI-drafted buyer notices with approvedd recovery plans. Never exposes internal costs or blame.
           </DialogDescription>
         </DialogHeader>
 
