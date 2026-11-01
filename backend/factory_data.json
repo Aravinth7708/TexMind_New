@@ -1,0 +1,34 @@
+{
+  "orders": [],
+  "buyers": [],
+  "materials": [],
+  "bottlenecks": [],
+  "insights": [],
+  "adminNotifications": [],
+  "buyerNotifications": [],
+  "totals": {
+    "orders": 0,
+    "inProduction": 0,
+    "completed": 0,
+    "delayed": 0,
+    "producedQty": 0,
+    "pendingQty": 0,
+    "onTimeRate": 0,
+    "health": 0
+  },
+  "healthBreakdown": [],
+  "targetVsActual": [],
+  "stagePerformance": [],
+  "stageManagers": {
+    "yarn": "Unassigned",
+    "knitting": "Unassigned",
+    "dyeing": "Unassigned",
+    "compacting": "Unassigned",
+    "cutting": "Unassigned",
+    "printing": "Unassigned",
+    "sewing": "Unassigned",
+    "ironing": "Unassigned",
+    "packing": "Unassigned"
+  },
+  "stageSummaries": []
+}
