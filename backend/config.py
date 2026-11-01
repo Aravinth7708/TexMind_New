@@ -1,4 +1,5 @@
 import os
+import tempfile
 
 QDRANT_HOST = os.getenv("QDRANT_HOST", "http://localhost:6333")
 COLLECTION_NAME = "texmind_factory_kb"
@@ -7,6 +8,11 @@ VECTOR_DIM = 384
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b-cloud")
 EMBED_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+IS_VERCEL = os.getenv("VERCEL") == "1"
+FASTEMBED_CACHE_DIR = os.getenv(
+    "FASTEMBED_CACHE_DIR",
+    os.path.join(tempfile.gettempdir(), "texmind-fastembed") if IS_VERCEL else "",
+) or None
 
 # Operational API settings.  This is deliberately a development boundary, not a
 # replacement for SSO: callers select a seeded user by header and the server
@@ -16,7 +22,9 @@ AUTH_MODE = os.getenv("TEXMIND_AUTH_MODE", "development")
 DEV_AUTH_ENABLED = os.getenv("TEXMIND_DEV_AUTH_ENABLED", "true").lower() == "true"
 OPERATIONAL_DB_PATH = os.getenv(
     "TEXMIND_OPERATIONAL_DB_PATH",
-    os.path.join(os.path.dirname(__file__), "texmind_operational.sqlite3"),
+    os.path.join(tempfile.gettempdir(), "texmind_operational.sqlite3")
+    if IS_VERCEL
+    else os.path.join(os.path.dirname(__file__), "texmind_operational.sqlite3"),
 )
 CORS_ORIGINS = [
     origin.strip()

@@ -3,13 +3,12 @@ from typing import Dict, Any, List, Optional, AsyncGenerator
 import httpx
 from qdrant_client import QdrantClient
 from qdrant_client.models import Filter, FieldCondition, MatchValue, MatchAny
-from fastembed import TextEmbedding
 from config import QDRANT_HOST, COLLECTION_NAME, OLLAMA_HOST, OLLAMA_MODEL
+from embedding import get_embedding_model
 
 class RagService:
     def __init__(self):
         self.qdrant = QdrantClient(url=QDRANT_HOST, check_compatibility=False)
-        self.embed_model = TextEmbedding()
 
     def build_role_filter(self, role: str, buyer_id: Optional[str] = None, stage: Optional[str] = None) -> Optional[Filter]:
         role = (role or "admin").lower()
@@ -50,7 +49,7 @@ class RagService:
         top_k: int = 6
     ) -> List[Dict[str, Any]]:
         # Generate query embedding
-        query_vector = list(self.embed_model.embed([query]))[0].tolist()
+        query_vector = list(get_embedding_model().embed([query]))[0].tolist()
         role_filter = self.build_role_filter(role, buyer_id, stage)
 
         try:

@@ -4,7 +4,7 @@ import uuid
 from typing import List, Dict, Any
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
-from fastembed import TextEmbedding
+from embedding import get_embedding_model
 from config import QDRANT_HOST, COLLECTION_NAME, VECTOR_DIM
 
 def load_factory_data() -> Dict[str, Any]:
@@ -234,7 +234,7 @@ def index_factory_kb():
     )
 
     print("Initializing embedding model...")
-    embed_model = TextEmbedding()
+    embed_model = get_embedding_model()
 
     texts = [d["text"] for d in docs]
     print(f"Generating embeddings for {len(texts)} documents...")
