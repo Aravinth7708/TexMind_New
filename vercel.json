@@ -3,15 +3,17 @@
   "services": {
     "app": {
       "root": ".",
-      "framework": "tanstack-start"
+      "framework": "tanstack-start-lovable"
     },
     "nodejs-backend": {
       "root": "nodejs-backend",
-      "framework": "express"
+      "framework": "express",
+      "entrypoint": "src/index.ts"
     },
     "backend": {
       "root": "backend",
-      "framework": "fastapi"
+      "framework": "fastapi",
+      "entrypoint": "main:app"
     }
   },
   "rewrites": [
@@ -47,4 +49,3 @@
     }
   ]
 }
-
