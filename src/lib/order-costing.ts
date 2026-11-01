@@ -11,7 +11,7 @@ export type OrderCosting = {
 
 const STORAGE_KEY = "texmind-order-costing";
 const CHANGE_EVENT = "texmind-order-costing-change";
-export const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:3001").replace(/\/$/, "");
+export const API_BASE_URL = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
 const emptyStageCosts = (): Record<StageKey, number> =>
   Object.fromEntries(STAGES.map((stage) => [stage, 0])) as Record<StageKey, number>;

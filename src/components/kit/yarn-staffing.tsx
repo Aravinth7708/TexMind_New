@@ -28,6 +28,7 @@ import {
   orders,
   type StageKey,
 } from "@/lib/data";
+import { API_BASE_URL } from "@/lib/order-costing";
 
 export interface OrderStaffing {
   id: string;
@@ -158,7 +159,7 @@ export function StageStaffingSection({ stage = "yarn" }: StageStaffingSectionPro
 
   // Check WhatsApp server connection on mount
   useEffect(() => {
-    fetch("http://localhost:3001/api/whatsapp/status")
+    fetch(`${API_BASE_URL}/api/whatsapp/status`)
       .then((res) => res.json())
       .then((data) => {
         setWaConnected(data.status === "connected");
@@ -349,7 +350,7 @@ export function StageStaffingSection({ stage = "yarn" }: StageStaffingSectionPro
           year: "numeric",
         });
 
-        const response = await fetch("http://localhost:3001/api/whatsapp/send-staffing", {
+        const response = await fetch(`${API_BASE_URL}/api/whatsapp/send-staffing`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

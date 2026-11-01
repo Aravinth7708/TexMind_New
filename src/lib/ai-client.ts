@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:8008";
+const BACKEND_URL = (import.meta.env.VITE_AI_BACKEND_URL || "").replace(/\/$/, "");
 
 export interface ChatMessage {
   role: "user" | "assistant" | "system";

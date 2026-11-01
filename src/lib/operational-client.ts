@@ -23,7 +23,7 @@ export interface AttentionResponse {
   source?: string;
 }
 
-const BACKEND_URL = "http://127.0.0.1:8008";
+const BACKEND_URL = (import.meta.env.VITE_OPERATIONAL_BACKEND_URL || "").replace(/\/$/, "");
 
 export async function getOperationalAttention(session?: any): Promise<AttentionResponse> {
   const role = session?.role || "admin";
