@@ -1,5 +1,5 @@
 -- Private snapshot used by the TexMind Node.js API to persist its existing
--- SQLite-backed portal tables in Supabase. Only the backend secret key can access it.
+-- SQLite-backed portal tables in Supabase. Onsly the backend secret key can access it.
 create table if not exists public.texmind_portal_state (
   id text primary key,
   data jsonb not null default '{}'::jsonb,
